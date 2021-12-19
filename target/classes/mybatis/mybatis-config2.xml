@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 1.配置开发环境 -->
+	<environments default="test">
+		<environment id="test">
+			<!-- 1.1.配置事务管理方式, type可取值为:
+				JDBC: 将事务交给JDBC来管理(推荐)
+				MANAGED: 自己管理事务
+			-->
+			<transactionManager type="JDBC" />
+			
+			<!-- 1.2.配置连接池(数据源) type可取值为:
+				POOLED: 使用连接池
+				UNPOOLED: 不使用连接池
+				JNDI: 已过时
+			 -->
+			<dataSource type="POOLED">
+				<property name="driver"  value="com.mysql.jdbc.Driver"/>
+				<property name="url"  value="jdbc:mysql://localhost:3306/yonghedb?characterEncoding=utf-8"/>
+				<property name="username"  value="root"/>
+				<property name="password"  value="root"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 2.导入mapper配置文件 -->
+	<mappers>
+		<!-- resource属性指定mapper文件的路径, 如果有多个mapper文件, 可以通过多个mapper
+		标签进行导入, 基于类目录寻找配置文件 -->
+		<mapper resource="mybatis/mapper/DoorMapper.xml"/>
+	</mappers>
+	
+</configuration>
+
+
+
